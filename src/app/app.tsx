@@ -26,11 +26,11 @@ export const App = () => {
                             {routes.map(({...routeProps}, i) => (<Route {...routeProps} key={i}/>))}
                         </Switch>
                     </Template>
+                    <GetParameterPopups />
                 </ThemeProvider>
             </BrowserRouter>
         </QueryClientProvider>
     )
 }
-// <GetParameterPopups/>
 
 
