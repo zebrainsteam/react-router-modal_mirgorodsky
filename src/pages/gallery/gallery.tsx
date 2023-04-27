@@ -7,7 +7,7 @@ import { PrimaryButton } from "@buttons/primary";
 import {GET_PARAMS, GET_ENUMS} from '@src/app/components/get-parameter-popups/const'
 
 export const GalleryPage = () => {
-    const signInLink = usePrepareLink({
+    const [signInLink] = usePrepareLink({
         query: {
             [GET_PARAMS.popup]: GET_ENUMS.popup.signIn
         }

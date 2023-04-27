@@ -1,10 +1,10 @@
-import axios from 'axios'
+import axios, {AxiosResponse} from 'axios'
 import {config} from "./../congif"
 
-import { MakeRequest } from './types'
+import { MakeRequestProps } from './types'
 
 
-export const makeRequest: MakeRequest = ({url, method = 'get', params = {}, data = {}, headers = {}}) => {
+export const makeRequest = <T, P extends object = {}>({url, method = 'get', params = {}, data, headers = {}}:MakeRequestProps<P>):Promise<AxiosResponse<T, P>> => {
     const instance = axios.create(config.commonRequestConfig);
 
     instance.interceptors.request.use(

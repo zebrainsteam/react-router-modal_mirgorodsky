@@ -1,4 +1,4 @@
-import { useLocation, useRouteMatch } from "react-router-dom";
+import {useHistory, useLocation, useRouteMatch} from "react-router-dom";
 import { UsePrepareLink } from './types'
 
 export const usePrepareLink:UsePrepareLink = ({
@@ -12,6 +12,8 @@ export const usePrepareLink:UsePrepareLink = ({
 }) => {
   const location = useLocation();
   const match = useRouteMatch();
+  const history = useHistory();
+
 
   let pathname;
 
@@ -38,10 +40,11 @@ export const usePrepareLink:UsePrepareLink = ({
     newQuery.set(key, splittedValue);
   });
 
-  return {
+
+  return [{
     pathname: pathname.replace(/\/\//g, "/"),
     search: newQuery.toString() ? `?${newQuery.toString()}` : "",
     hash,
     state,
-  };
+  }, history.goBack]
 };

@@ -11,6 +11,7 @@ import { Wrapper, AvatarWrapper, Avatar } from "./styles";
 export const Card1: FC<Card1Props> = ({
                                           name,
                                           id,
+                                          children,
                                           ...props
                                       }) => {
     return (
@@ -20,6 +21,7 @@ export const Card1: FC<Card1Props> = ({
             </AvatarWrapper>
 
             <Text textAlign="center">{name}</Text>
+            {children}
         </Wrapper>
     );
 };

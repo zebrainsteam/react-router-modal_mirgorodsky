@@ -1,14 +1,17 @@
-import { useEffect, useState } from 'react';
-import {UseQuery} from './types'
+import {useEffect, useState} from 'react';
+import { ApiRequest } from "@api/types"
+import { UseQueryProps, UseQueryResult} from './types'
 
 
-export const useQuery:UseQuery = (props) => {
-    const {
-        deps = [],
-        responseHandler,
-        queryFn,
-        requestConditions = true
-    } = props || {}
+export const useQuery = <
+    T extends ApiRequest
+>({
+                                                                 deps = [],
+                                                                 queryFn,
+                                                                 requestConditions = true
+                                                             }:
+                              UseQueryProps<T>): UseQueryResult<T> =>
+{
     const [isFirstDataLoaded, setIsFirstDataLoaded] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
@@ -21,14 +24,9 @@ export const useQuery:UseQuery = (props) => {
                 try {
                     setIsLoading(true);
 
-                    const { data } = await queryFn()
-                    let outputData = data;
+                    const {data} = await queryFn()
 
-                    if (responseHandler) {
-                        outputData = await responseHandler(data);
-                    }
-
-                    setResponseData(outputData);
+                    setResponseData(data);
                     setIsLoading(false);
                     if (!isFirstDataLoaded) {
                         setIsFirstDataLoaded(true);
@@ -45,5 +43,3 @@ export const useQuery:UseQuery = (props) => {
 
     return [responseData, isLoading, isFirstDataLoaded, error];
 };
-
-export type IUseQuery = typeof useQuery

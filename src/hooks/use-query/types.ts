@@ -1,9 +1,18 @@
+import { ApiRequest } from "@api/types"
 
-export interface UseQueryConfig<ResponseDataI, HandlerData> {
+
+export interface UseQueryProps<QueryFn extends ApiRequest
+    // , ResponseHandler extends ApiResponseHandler<QueryFn> | undefined
+    > {
     deps?: any[],
-    responseHandler?: (data: ResponseDataI) => HandlerData,
-    queryFn?: any
+    queryFn: QueryFn,
+    // responseHandler?: ResponseHandler
     requestConditions?: boolean
 }
 
-export type UseQuery = <ResponseDataI = object, HandlerData = ResponseDataI>(params?: UseQueryConfig<ResponseDataI, HandlerData>) => [HandlerData | undefined, boolean, boolean, string]
+export type AxiosData<T> = T extends {
+    data?: infer U,
+    [key: string]: any
+} ? U : undefined
+
+export type UseQueryResult<T extends ApiRequest> = [AxiosData<Awaited<ReturnType<T>>> | undefined, boolean, boolean, string]

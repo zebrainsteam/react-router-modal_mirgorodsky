@@ -1,4 +1,4 @@
-import { MainPage, GalleryPage, UsersPage } from "@pages";
+import { MainPage, GalleryPage, UsersPage, UserPage } from "@pages";
 
 export const routes = [
   {
@@ -21,8 +21,7 @@ export const routes = [
     isHeaderNavItem: true
   },
   {
-    path: "/users/:id",
-    component: UsersPage,
-    navTitle: 'Users'
+    path: "/user/:id",
+    component: UserPage
   },
 ];

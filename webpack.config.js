@@ -52,6 +52,7 @@ module.exports = {
 		overlay: true,
 		contentBase: 'src/',
 		historyApiFallback: true,
+		port: 8081
 	},
 	plugins: [
 		...defaultPlugins
