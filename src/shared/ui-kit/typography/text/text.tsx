@@ -24,6 +24,7 @@ export const Text = styled.p<TextProps>`
             width: 100%;
             height: ${isActiveLink ? '2px' : '1px'};
             background-color: ${({ theme }) => theme.palette.fonts.quaternary};
+            opacity: ${isActiveLink ? '1' : '0.5'};
           }
     `}
 

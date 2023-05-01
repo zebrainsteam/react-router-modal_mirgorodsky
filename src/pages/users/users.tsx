@@ -8,7 +8,7 @@ import { PrimaryModal } from "@ui-kit/modal/primary";
 import { PrimarySpinner } from "@ui-kit/loading/spinner/primary";
 import { PrimaryButton } from "@buttons/primary";
 import { GET_ENUMS, GET_PARAMS } from "@src/app/components/get-parameter-popups/const";
-import {Preview} from './components/preview'
+import { Position } from './components/position'
 
 
 import { getUsers } from "@api/rest/users"
@@ -19,7 +19,7 @@ export const UsersPage = () => {
     })
 
     const [userDataLink, closeUserModal] = usePrepareLink({
-        to: "/preview",
+        to: "/position",
         isRelativePath: true
     });
 
@@ -58,7 +58,7 @@ export const UsersPage = () => {
 
                 return (
                     <PrimaryModal onClose={closeUserModal} isOpen={Boolean(match)}>
-                        <Preview id={userId} />
+                        <Position id={userId} />
                     </PrimaryModal>
                 );
             }}

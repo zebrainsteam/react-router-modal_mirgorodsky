@@ -1,9 +1,9 @@
 import React, {FC} from "react";
 
-import {PreviewProps} from './types'
-import {useGetParameter, useQuery} from "@hook";
-import {getUser} from "@api/rest/users";
-import {PrimarySpinner} from "@ui-kit/loading/spinner/primary";
+import { PositionProps } from './types'
+import { useGetParameter, useQuery} from "@hook";
+import { getUser } from "@api/rest/users";
+import { PrimarySpinner } from "@ui-kit/loading/spinner/primary";
 import { Box } from "@grid";
 
 
@@ -13,9 +13,7 @@ import {FrameworkNavItem} from "./components/framework-nav-item"
 import {frameworksParams} from "./const"
 import {PrimaryButton} from "@buttons/primary";
 
-export const Preview: FC<PreviewProps> = ({id}) => {
-    const frameworkName = useGetParameter('framework');
-
+export const Position: FC<PositionProps> = ({id}) => {
     const [data, isLoading] = useQuery({
         queryFn: getUser({id}),
         requestConditions: id > 0,
