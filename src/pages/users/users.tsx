@@ -55,9 +55,11 @@ export const UsersPage = () => {
             path={`${userDataLink.pathname}/:id`}
             children={({ match }) => {
                 const userId = Number(match?.params.id)
+                const isModalOpen = Boolean(match)
+
 
                 return (
-                    <PrimaryModal onClose={closeUserModal} isOpen={Boolean(match)}>
+                    <PrimaryModal onClose={closeUserModal} isOpen={isModalOpen}>
                         <Position id={userId} />
                     </PrimaryModal>
                 );

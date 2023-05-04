@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 
 import { PositionProps } from './types'
-import { useGetParameter, useQuery} from "@hook";
+import { useQuery } from "@hook";
 import { getUser } from "@api/rest/users";
 import { PrimarySpinner } from "@ui-kit/loading/spinner/primary";
 import { Box } from "@grid";
